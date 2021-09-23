@@ -56,6 +56,7 @@
         const places = [
           { name: "만돈만리", location: { lat: 37.536416, lon: 127.228917 } },
           { name: "꿈동산신안아파트", location: { lat: 37.536985685732624, lon: 127.22583426477364 } },
+          { name: "하남벤처센터", location: { lat: position.coords.latitude, lon: position.coords.longitude } },
         ];
 
         places.forEach((place) => {
@@ -68,8 +69,6 @@
           placeText.setAttribute("title", place.name);
           placeText.setAttribute("scale", "15 15 15");
 
-
-          alert(placeText)
           placeText.addEventListener("loaded", () => {
             window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
           });
