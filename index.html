@@ -48,43 +48,43 @@
       const scene = document.querySelector("a-scene");
 
       // first get current user location
-      return navigator.geolocation.getCurrentPosition(function(position) {
-
-        // than use it to load from remote APIs some places nearby
-        // loadPlaces(position.coords)
-        //   .then((places) => {
-        const places = [
-          { name: "만돈만리", location: { lat: 37.536416, lon: 127.228917 } },
-          { name: "꿈동산신안아파트", location: { lat: 37.536985685732624, lon: 127.22583426477364 } },
-          { name: "하남벤처센터", location: { lat: position.coords.latitude, lon: position.coords.longitude } },
-        ];
-
-        places.forEach((place) => {
-          const latitude = place.location.lat;
-          const longitude = place.location.lng;
-
-          // add place name
-          const placeText = document.createElement("a-link");
-          placeText.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
-          placeText.setAttribute("title", place.name);
-          placeText.setAttribute("scale", "15 15 15");
-
-          placeText.addEventListener("loaded", () => {
-            window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
-          });
-
-          scene.appendChild(placeText);
-        });
-
-        // });
-        // },
-        // (err) => console.error("Error in retrieving position", err),
-        // {
-        //   enableHighAccuracy: true,
-        //   maximumAge: 0,
-        //   timeout: 27000,
-        // },
-      });
+      // return navigator.geolocation.getCurrentPosition(function(position) {
+      //
+      //   // than use it to load from remote APIs some places nearby
+      //   // loadPlaces(position.coords)
+      //   //   .then((places) => {
+      //   const places = [
+      //     { name: "만돈만리", location: { lat: 37.536416, lon: 127.228917 } },
+      //     { name: "꿈동산신안아파트", location: { lat: 37.536985685732624, lon: 127.22583426477364 } },
+      //     { name: "하남벤처센터", location: { lat: position.coords.latitude, lon: position.coords.longitude } },
+      //   ];
+      //
+      //   places.forEach((place) => {
+      //     const latitude = place.location.lat;
+      //     const longitude = place.location.lng;
+      //
+      //     // add place name
+      //     const placeText = document.createElement("a-link");
+      //     placeText.setAttribute("gps-entity-place", `latitude: ${latitude}; longitude: ${longitude};`);
+      //     placeText.setAttribute("title", place.name);
+      //     placeText.setAttribute("scale", "15 15 15");
+      //
+      //     placeText.addEventListener("loaded", () => {
+      //       window.dispatchEvent(new CustomEvent("gps-entity-place-loaded"));
+      //     });
+      //
+      //     scene.appendChild(placeText);
+      //   });
+      //
+      //   // });
+      //   // },
+      //   // (err) => console.error("Error in retrieving position", err),
+      //   // {
+      //   //   enableHighAccuracy: true,
+      //   //   maximumAge: 0,
+      //   //   timeout: 27000,
+      //   // },
+      // });
     };
   </script>
 </head>
