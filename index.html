@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./librarySrc/dist/pdfdp.js"></script>
+    <script>
+      window.onload = function () {
+        const pdfdp = new Pdfdp({
+          target: document.getElementById("pdfContainer"),
+          // serverSide: true,
+        });
+        // const pdfOrbs2 = new PdfOrbs(document.getElementById("pdfContainer2"));
+
+        // pdfdp.load("example2").catch(function (e) {
+        //     alert("파일을 읽어오지 못했습니다.");
+        //     console.log(e)
+        // });
+        // pdfdp.font.addFonts([
+        //   {
+        //     fontFamily: "MaruBuri-Regular",
+        //     displayName: "마루부리",
+        //     url: "C:/Users/USER/Downloads/pdfdp/src/main/resources/static/fonts/MaruBuri-Regular.ttf",
+        //   },
+        //   {
+        //     fontFamily: "Nanum Gothic",
+        //     displayName: "나눔고딕",
+        //     url: "C:/Users/USER/Downloads/pdfdp/src/main/resources/static/fonts/NanumGothic.ttf",
+        //   },
+        // ]);
+
+        pdfdp.load("https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf").catch(function (e) {
+          alert("파일을 읽어오지 못했습니다.");
+          console.log(e)
+        });
+
+        // pdfOrbs.load("example2").catch(function (e) {
+        //     alert("파일을 읽어오지 못했습니다.");
+        //     console.log(e)
+        // });
+        // pdfOrbs2.load("example2").catch((e) => alert("파일을 읽어오지 못했습니다."));
+      }
+    </script>
+    <link rel="stylesheet" type="text/css" href="./pdfdp.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="pdfContainer" style="height: 100vh"></div>
+<!--<div id="pdfContainer2" style="height: 50vh"></div>-->
+</body>
+</html>

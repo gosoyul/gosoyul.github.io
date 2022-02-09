@@ -1,0 +1,270 @@
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+    font-size: 12px;
+    outline: none;
+}
+
+.pdfdp-wrapper-container {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdfdp-menu-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 0 15px;
+    height: 35px;
+    /*box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);*/
+    border-bottom: 1px solid rgb(180, 180, 180);
+    z-index: 9998;
+}
+
+.pdfdp-menu-container > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.pdfdp-menu-left {
+    justify-content: left;
+}
+
+.pdfdp-menu-right {
+    justify-content: right;
+}
+
+.pdfdp-menu-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.pdfdp-menu-button svg {
+    width: 23px;
+    height: 23px;
+    fill: #111;
+}
+
+.pdfdp-menu-button span {
+    margin-left: 5px;
+    /*font-size: 15px;*/
+}
+
+.pdfdp-menu-button:hover * {
+    fill: #0066cc;
+    color: #0066cc;
+}
+
+.pdfdp-viewer-container {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+}
+
+.pdfdp-list-container {
+    min-width: 120px;
+    width: 120px;
+    overflow-y: scroll;
+}
+
+.pdfdp-list-item {
+    margin: 5px 5px 0;
+    border: 1px solid transparent;
+}
+
+.pdfdp-list-item + .pdfdp-list-item {
+    margin-top: 20px;
+}
+
+.pdfdp-list-item.selected {
+    border-color: black;
+}
+
+.pdfdp-list-item img {
+    width: 100%;
+}
+
+/*.pdfdp-main-container {*/
+/*    display: flex;*/
+/*    position: relative;*/
+/*    flex: 1;*/
+/*    background-color: rgba(0, 0, 0, 0.1);*/
+/*}*/
+.pdfdp-page-container {
+    flex: 1;
+    border-left: 1px solid rgb(180, 180, 180);
+    border-right: 1px solid rgb(180, 180, 180);
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.pdfdp-page {
+    position: relative;
+    margin: auto;
+    display: inline-block;
+}
+
+.pdfdp-page + .pdfdp-page {
+    margin-top: 10px;
+}
+
+.pdfdp-page.hidden {
+    display: none;
+}
+
+.pdfdp-page * {
+    margin: 0;
+    padding: 0;
+}
+
+.pdfdp-page-item {
+    position: absolute;
+    outline: solid 2px transparent;
+    width: fit-content;
+}
+
+.pdfdp-page-item:hover {
+    outline-color: #0066cc;
+    cursor: grab;
+}
+.pdfdp-page-item.selected {
+    outline: 1px dashed gray;
+}
+
+.pdfdp-page-item *:not(.pdfdp-page-item-point) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdfdp-page-item img {
+    vertical-align: top;
+}
+
+.pdfdp-page-item-point {
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    border: solid 2px red;
+    background: white;
+    border-radius: 10px;
+}
+.pdfdp-page-item:not(.selected) .pdfdp-page-item-point {
+    display: none;
+}
+
+.pdfdp-page-container:not([data-mode='selection']) .pdfdp-page {
+    cursor: crosshair;
+}
+
+.pdfdp-canvas {
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.pdfdp-text-box div {
+    display: inline-block !important;
+}
+/*.pdfdp-page-container[data-mode='textBox'] .pdfdp-text-box [contenteditable]:hover {*/
+[contenteditable='true']:hover {
+    cursor: text !important;
+}
+
+.pdfdp-tool-options-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 220px;
+}
+.pdfdp-tool-options-body {
+    position: absolute;
+    height: calc(100% - 50px);
+    background-color: white;
+    padding: 20px 0;
+}
+.pdfdp-tool-options-item {
+    display: flex;
+    height: 35px;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.pdfdp-tool-options-item-icon {
+    display: flex;
+    justify-content: center;
+    min-width: 23px;
+    margin-right: 7px;
+}
+.pdfdp-tool-options-item-title {
+    min-width: 50px;
+}
+.pickr {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+.pdfdp-tool-options-item-value {
+    flex: 1;
+}
+.pdfdp-tool-options-item-value input {
+    width: calc(100% - 4px);
+}
+
+.pdfdp-preview-container {
+    flex: 1;
+    position: absolute;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.90);
+    justify-content: center;
+    overflow-y: auto;
+    z-index: 9999;
+}
+
+.pdfdp-preview-image-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.90);
+}
+
+.pdfdp-preview-image-container canvas + canvas {
+    margin-top: 20px;
+}
+
+.pdfdp-preview-menu-container {
+    position: fixed;
+    border: none;
+    top: 10px;
+    right: 26px;
+}
+
+.pdfdp-preview-menu-container button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: none;
+    fill: white;
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
