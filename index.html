@@ -1,56 +1,43 @@
+
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="./pdfdp.js"></script>
-    <script>
-      window.onload = function () {
-        const pdfdp = new Pdfdp({
-          target: document.getElementById("pdfContainer"),
-          // serverSide: true,
-        });
-        // const pdfOrbs2 = new PdfOrbs(document.getElementById("pdfContainer2"));
-
-        // pdfdp.load("example2").catch(function (e) {
-        //     alert("파일을 읽어오지 못했습니다.");
-        //     console.log(e)
-        // });
-        // pdfdp.font.addFonts([
-        //   {
-        //     fontFamily: "MaruBuri-Regular",
-        //     displayName: "마루부리",
-        //     url: "C:/Users/USER/Downloads/pdfdp/src/main/resources/static/fonts/MaruBuri-Regular.ttf",
-        //   },
-        //   {
-        //     fontFamily: "Nanum Gothic",
-        //     displayName: "나눔고딕",
-        //     url: "C:/Users/USER/Downloads/pdfdp/src/main/resources/static/fonts/NanumGothic.ttf",
-        //   },
-        // ]);
-
-        pdfdp.load("./공도삼성점 변경도면_210819.pdf").catch(function (e) {
-          alert("파일을 읽어오지 못했습니다.");
-          console.log(e)
-        });
-
-        // pdfOrbs.load("example2").catch(function (e) {
-        //     alert("파일을 읽어오지 못했습니다.");
-        //     console.log(e)
-        // });
-        // pdfOrbs2.load("example2").catch((e) => alert("파일을 읽어오지 못했습니다."));
-      }
-    </script>
-    <link rel="stylesheet" type="text/css" href="./pdfdp.css">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web share test</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+
     </style>
-</head>
-<body>
-<div id="pdfContainer" style="height: 100vh"></div>
-<!--<div id="pdfContainer2" style="height: 50vh"></div>-->
-</body>
+  <script type="text/javascript" nonce="bf4db8c6f3124d7aab23ea3b009" src="//local.adguard.org?ts=1718344840826&amp;type=content-script&amp;dmn=mdn.github.io&amp;url=https%3A%2F%2Fmdn.github.io%2Fdom-examples%2Fweb-share%2F&amp;app=msedge.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+<script type="text/javascript" nonce="bf4db8c6f3124d7aab23ea3b009" src="//local.adguard.org?ts=1718344840826&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head>
+  <body>
+    <h1>Sharing MDN</h1>
+
+    <p>We love MDN, and want to share it as far as we can! Click the following button to share MDN's home page using your system's native share functionality. See the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#Browser_compatibility">browsers this currently works on</a>.</p>
+
+    <p><button>Share MDN!</button></p>
+
+    <p class="result"></p>
+
+    <script>
+      let shareData = {
+        //title: 'MDN',
+        text: 'Learn web development on MDN!',
+        //url: 'https://developer.mozilla.org',
+      }
+
+      const btn = document.querySelector('button');
+      const resultPara = document.querySelector('.result');
+
+      btn.addEventListener('click', () => {
+        navigator.share(shareData)
+          .then(() =>
+            resultPara.textContent = 'MDN shared successfully'
+          )
+          .catch((e) =>
+            resultPara.textContent = 'Error: ' + e
+          )
+      });
+    </script>
+  </body>
 </html>
