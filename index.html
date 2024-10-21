@@ -1,43 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web share test</title>
-    <style>
-
-    </style>
-  <script type="text/javascript" nonce="bf4db8c6f3124d7aab23ea3b009" src="//local.adguard.org?ts=1718344840826&amp;type=content-script&amp;dmn=mdn.github.io&amp;url=https%3A%2F%2Fmdn.github.io%2Fdom-examples%2Fweb-share%2F&amp;app=msedge.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
-<script type="text/javascript" nonce="bf4db8c6f3124d7aab23ea3b009" src="//local.adguard.org?ts=1718344840826&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script></head>
-  <body>
-    <h1>Sharing MDN</h1>
-
-    <p>We love MDN, and want to share it as far as we can! Click the following button to share MDN's home page using your system's native share functionality. See the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share#Browser_compatibility">browsers this currently works on</a>.</p>
-
-    <p><button>Share MDN!</button></p>
-
-    <p class="result"></p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Example</title>
+</head>
+<body>
+    <button id="smsBtn">Send SMS</button>
 
     <script>
-      let shareData = {
-        //title: 'MDN',
-        text: 'Learn web development on MDN!',
-        //url: 'https://developer.mozilla.org',
-      }
+        document.getElementById('smsBtn').addEventListener('click', () => {
+            const phoneNumber = '1234567890'; // 수신자 전화번호
+            const message = '고객님 안녕하세요!\n지금 바로 참여해서 경품받아가세요.\n아래 링크로 참여 부탁드립니다.\nhttps://nxl-cosp-stg.hanwhalife.com/api/landing1/hli/evnt/1125/cntc-cust/IvZKSaeaUQ8bx%2Bvhws8tmA%3D%3D?shreUuid=39f5ec885c4c42c790e1a89032cd4ba4&ref=bnefpkg';
 
-      const btn = document.querySelector('button');
-      const resultPara = document.querySelector('.result');
+            // URL 인코딩
+            const encodedMessage = encodeURIComponent(message);
+            console.log(encodedMessage); // 인코딩된 메시지를 확인
 
-      btn.addEventListener('click', () => {
-        navigator.share(shareData)
-          .then(() =>
-            resultPara.textContent = 'MDN shared successfully'
-          )
-          .catch((e) =>
-            resultPara.textContent = 'Error: ' + e
-          )
-      });
+            // SMS 앱 실행
+            const smsUrl = `sms:${phoneNumber}?body=${encodedMessage}`;
+            window.location.href = smsUrl;
+        });
     </script>
-  </body>
+</body>
 </html>
