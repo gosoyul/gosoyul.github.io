@@ -49,7 +49,7 @@
     </style>
 </head>
 <body>
-    <h1>Send SMS v4</h1>
+    <h1>Send SMS v5</h1>
     
     <label for="phoneNumber">Phone Number:</label>
     <input type="text" id="phoneNumber" placeholder="Enter phone number" value='01042380017' />
@@ -86,15 +86,15 @@ https://nxl-cosp-stg.hanwhalife.com/api/landing1/hli/newsltrs/1124/cntc-cust/IvZ
             }
 
             // URL 인코딩
-            const replacedMessage = message.replaceAll("&", "\\&");
-            const encodedMessage = encodeURIComponent(replacedMessage);
+            //const replacedMessage = message.replaceAll("&", encodeURIComponent("&"));
+            const encodedMessage = encodeURIComponent(message);
             console.log(encodedMessage); // 인코딩된 메시지를 확인
 
             // SMS 앱 실행
             const smsUrl = `sms:${phoneNumber}?body=${encodedMessage}`;
 
             console.log("smsUrl", smsUrl);
-            window.location.href = smsUrl;
+            window.open(smsUrl);
         });
     </script>
 </body>
