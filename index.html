@@ -86,7 +86,7 @@ https://nxl-cosp-stg.hanwhalife.com/api/landing1/hli/newsltrs/1124/cntc-cust/IvZ
             }
 
             // URL 인코딩
-            const replacedMessage = message.replaceAll("&", encodeURIComponent("＆"));
+            const replacedMessage = message.replaceAll("&", "＆");
             const encodedMessage = encodeURIComponent(replacedMessage);
             console.log(encodedMessage); // 인코딩된 메시지를 확인
 
