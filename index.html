@@ -91,6 +91,8 @@ https://nxl-cosp-stg.hanwhalife.com/api/landing1/hli/newsltrs/1124/cntc-cust/IvZ
 
             // SMS 앱 실행
             const smsUrl = `sms:${phoneNumber}?body=${encodedMessage}`;
+
+            console.log("smsUrl", smsUrl);
             window.location.href = smsUrl;
         });
     </script>
